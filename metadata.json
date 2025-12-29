@@ -1,0 +1,8 @@
+{
+  "name": "Gemini Connect - Videochiamate",
+  "description": "Un'app per videoconferenze ricca di funzionalità con assistenza AI, condivisione dello schermo e capacità illimitata tramite WebRTC.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
