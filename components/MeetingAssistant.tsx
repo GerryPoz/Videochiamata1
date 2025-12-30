@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import * as React from 'react';
 import { getMeetingAssistantResponse } from '../services/geminiService';
 import { ChatMessage } from '../types';
 
@@ -8,9 +7,9 @@ interface MeetingAssistantProps {
 }
 
 const MeetingAssistant: React.FC<MeetingAssistantProps> = ({ chatHistory }) => {
-  const [query, setQuery] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [responses, setResponses] = useState<{ query: string; answer: string }[]>([]);
+  const [query, setQuery] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [responses, setResponses] = React.useState<{ query: string; answer: string }[]>([]);
 
   const handleAsk = async () => {
     if (!query.trim()) return;

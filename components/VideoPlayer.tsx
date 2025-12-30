@@ -1,5 +1,4 @@
-
-import React, { useEffect, useRef } from 'react';
+import * as React from 'react';
 import { Participant } from '../types';
 
 interface VideoPlayerProps {
@@ -8,9 +7,9 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ participant, isLocal }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (videoRef.current && participant.stream) {
       videoRef.current.srcObject = participant.stream;
     }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import * as React from 'react';
 import { Participant, ChatMessage, AppState } from './types';
 import VideoPlayer from './components/VideoPlayer';
 import MeetingAssistant from './components/MeetingAssistant';
@@ -6,23 +6,23 @@ import MeetingAssistant from './components/MeetingAssistant';
 import { joinRoom as joinTrysteroRoom } from 'trystero/torrent';
 
 const App: React.FC = () => {
-  const [appState, setAppState] = useState<AppState>(AppState.LOBBY);
-  const [roomId, setRoomId] = useState('');
-  const [userName, setUserName] = useState('');
-  const [localStream, setLocalStream] = useState<MediaStream | null>(null);
-  const [participants, setParticipants] = useState<Participant[]>([]);
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
-  const [showAiAssistant, setShowAiAssistant] = useState(false);
-  const [isAudioMuted, setIsAudioMuted] = useState(false);
-  const [isVideoMuted, setIsVideoMuted] = useState(false);
-  const [isScreenSharing, setIsScreenSharing] = useState(false);
+  const [appState, setAppState] = React.useState<AppState>(AppState.LOBBY);
+  const [roomId, setRoomId] = React.useState('');
+  const [userName, setUserName] = React.useState('');
+  const [localStream, setLocalStream] = React.useState<MediaStream | null>(null);
+  const [participants, setParticipants] = React.useState<Participant[]>([]);
+  const [chatHistory, setChatHistory] = React.useState<ChatMessage[]>([]);
+  const [showAiAssistant, setShowAiAssistant] = React.useState(false);
+  const [isAudioMuted, setIsAudioMuted] = React.useState(false);
+  const [isVideoMuted, setIsVideoMuted] = React.useState(false);
+  const [isScreenSharing, setIsScreenSharing] = React.useState(false);
 
   // Refs per gestire lo stato della stanza Trystero senza re-render
-  const roomRef = useRef<any>(null);
-  const participantsRef = useRef<Participant[]>([]);
+  const roomRef = React.useRef<any>(null);
+  const participantsRef = React.useRef<Participant[]>([]);
 
   // Sincronizza lo stato locale con i ref e la lista partecipanti
-  useEffect(() => {
+  React.useEffect(() => {
     if (appState === AppState.IN_ROOM && localStream) {
       const me: Participant = {
         id: 'me',
@@ -43,7 +43,7 @@ const App: React.FC = () => {
   }, [isAudioMuted, isVideoMuted, isScreenSharing, appState, localStream, userName]);
 
   // Gestione URL hash per stanze dirette
-  useEffect(() => {
+  React.useEffect(() => {
     const hash = window.location.hash.replace('#', '');
     if (hash) {
       setRoomId(hash);

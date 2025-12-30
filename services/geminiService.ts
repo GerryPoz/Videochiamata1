@@ -1,8 +1,7 @@
-
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 
 export const getMeetingAssistantResponse = async (chatHistory: string, userQuery: string) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const systemInstruction = `
     Sei un assistente professionale per riunioni chiamato "Gemini Connect AI".
